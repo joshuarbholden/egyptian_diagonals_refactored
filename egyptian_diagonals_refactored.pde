@@ -43,7 +43,7 @@ void draw() {
       noLoop();
     }
   }
-   noLoop();
+  noLoop();
 }
 
 void keyPressed() {
@@ -130,7 +130,7 @@ class Column {
     yend = yend - blockheight;
     yflippedend = yflippedend - blockheight;
     stepnum = stepnum + 1;
-        println(Yadjusted(xpos, ypos), Yadjusted(xpos, yend));  
+    println(Yadjusted(xpos, ypos), Yadjusted(xpos, yend));
   }
 
 
@@ -203,13 +203,14 @@ class Column {
     float ypos = Yadjusted(this.xpos, this.ypos);
     float yend = Yadjusted(this.xpos, this.yend);
     float xflipped = Xadjusted(this.xflipped, this.yflippedend);
+    float yflipped = Yadjusted(this.xflipped, this.yflipped);
     float yflippedend = Yadjusted(this.xflipped, this.yflippedend);
     if (this.yend-this.ypos<3*blockheight) {
       clip(0, 0, width, (ypos+yend)/2);
     }
     twotwoblock(xpos, ypos, 1, 1);
     if (this.yend-this.ypos<3*blockheight) {
-      clip(0, (ypos+yend)/2, width, height);
+      clip(0, (yflipped+yflippedend)/2, width, height);
     }
     twotwoblock(xflipped, yflippedend, -1, -1);
     noClip();
@@ -227,8 +228,9 @@ class Column {
     float yend = Yadjusted(this.xpos, this.yend);
     float xflipped = Xadjusted(this.xflipped, this.yflipped);
     float yflipped = Yadjusted(this.xflipped, this.yflipped);
+    float yflippedend = Yadjusted(this.xflipped, this.yflippedend);
     if (this.yend-this.ypos<3*blockheight) {
-      clip(0, 0, width, (ypos+yend)/2);
+      clip(0, 0, width, (yflipped+yflippedend)/2);
     }
     twotwoblock(xflipped, yflipped, -1, 1);
     if (this.yend-this.ypos<3*blockheight) {
