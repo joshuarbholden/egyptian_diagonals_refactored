@@ -7,9 +7,9 @@ int numcols = 4;
 int radius = 0;
 int maxtwist = 4;
 
-int yOffset = 0;
+int yOffset = 2;
 
-int yLength = 36;
+int yLength = 32;
 
 Column[] columns = new Column[numcols];
 
@@ -135,13 +135,13 @@ class Column {
 
 
   float Xadjusted(float X, float Y) {
-    float adjustedHeight = floor(height/blockheight)*blockheight;
+    float adjustedHeight = (floor(height/blockheight)-2)*blockheight;
     return X + floor(Y/adjustedHeight) * (2*numcols+1)*blockwidth;
   }
 
   float Yadjusted(float X, float Y) {
-    float adjustedHeight = floor(height/blockheight)*blockheight;
-    return Y % adjustedHeight;
+    float adjustedHeight = (floor(height/blockheight)-2)*blockheight;
+    return Y % adjustedHeight+1.5*blockheight;
   }
 
   void twotwoblock(float xpos, float ypos, int xdir, int ydir) {
